@@ -95,7 +95,7 @@ shift $(($OPTIND - 1))
 
 if [ -z "$TMPDIR" ];
 then
-    echo "Missing -t parameter: please specify a temporaty working directory to store JELLYFISH output.";
+    echo "Missing -t parameter: please specify a temporary working directory to store JELLYFISH output.";
     exit 1;
 fi
 
@@ -171,7 +171,7 @@ fi;
 
 if [ ! -r $TMPDIR/counts_${K}_${LCOUNT} ];
 then
-	 echo "File $TMPDIR/counts_${K}_${LCOUNT} does not exist. Check that jellyfish was compiled and paths are correct."
+	 echo "File $TMPDIR/counts_${K}_${LCOUNT} does not exist. Check that jellyfish was compiled successfully and paths are correct."
 	exit 1;
 
 fi; 
@@ -208,9 +208,9 @@ then
 #    rm $TMPDIR/corrected.fasta
 fi;
  
-if [ ! -r $TMPDIR/corrected.fasta ];
+if [ ! -r ${Read1}_corrected.fa ];
 then
-	 echo "File $TMPDIR/corrected.fasta does not exist. Check that SEECER was compiled and paths are correct."
+	 echo "File ${Read1}_corrected.fa does not exist. Last step in the pipeline failed. Check that SEECER was compiled succesfully and paths are correct."
 	exit 1;
 
 fi; 

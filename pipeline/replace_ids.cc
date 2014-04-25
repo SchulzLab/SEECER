@@ -78,12 +78,11 @@ int main(int argc, char* argv[]) {
       && origs.size() == output.size()) {
 
     int n = origs.size();
-  
     const int MAXSEQLENGTH=10000;  
     char id[256];
-    char seq[256];
-    char seqc[256];
-    char annot[256];
+    char seq[MAXSEQLENGTH];
+    char seqc[MAXSEQLENGTH];
+    char annot[MAXSEQLENGTH];
     int rid;
     char a;
 
@@ -97,7 +96,7 @@ int main(int argc, char* argv[]) {
 	    bool b = false;
 	    do {
 		assert(ReadNextLines(origs[fi], id, seq));
-		fprintf(stderr, "READ %s\t%s\n", id, seq);
+		// fprintf(stderr, "READ %s\t%s\n", id, seq);
 	      
 	      b = (rid == rridx);
 	      if (!b) {

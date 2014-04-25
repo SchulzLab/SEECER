@@ -25,8 +25,9 @@
 #
 
 
-BINDIR='./bin/'
-JF="../jellyfish-1.1.4/bin/jellyfish"
+BINDIR='bin/' #this can be hardcoded to /absolute/path/to/SEECER/bin/
+JF="../jellyfish-1.1.11/bin/jellyfish"    #this may be hardcoded to /absolute/path/to/jellyfish/bin/
+
 K=17
 SEECER_PARAMS=""
 SeecerStep=1
@@ -98,6 +99,7 @@ then
     exit 1;
 fi
 
+mkdir -p $TMPDIR
 
 Read1=$1
 Read2=$2
@@ -150,6 +152,13 @@ then
     ${BINDIR}/random_sub_N $RS_ARGS
 fi;
 
+if [ ! -r $Read1_N ];
+then
+	 echo "File $Read1_N does not exist. Check if the input file is in valid format and the paths are correct."
+	 exit 1;
+
+fi; 
+
 # 2. Running JELLYFISH to count kmers
 # Output: counts_$SeecerK file
 
@@ -159,6 +168,14 @@ then
     echo
     bash ${BINDIR}/run_jellyfish.sh $JF $TMPDIR/counts_${K}_${LCOUNT} $K $LCOUNT $TMPDIR $Read1_N $Read2_N
 fi;
+
+if [ ! -r $TMPDIR/counts_${K}_${LCOUNT} ];
+then
+	 echo "File $TMPDIR/counts_${K}_${LCOUNT} does not exist. Check that jellyfish was compiled and paths are correct."
+	exit 1;
+
+fi; 
+
 
 # 3. Seecer main part: correcting errrors
 # Output: corrected.fa
@@ -174,6 +191,14 @@ then
     echo
 fi;
 
+if [ ! -r $TMPDIR/corrected.fasta ];
+then
+	 echo "File $TMPDIR/corrected.fasta does not exist. Check that SEECER was compiled and paths are correct. SEECER may have aborted prematurely."
+	exit 1;
+
+fi; 
+
+
 # 4. Put back the original read IDs
 # Output:
 if [ $SeecerStep -le 4 ];
@@ -182,4 +207,12 @@ then
     ${BINDIR}/replace_ids $TMPDIR/corrected.fasta $Reads $Reads_N $Reads_O
 #    rm $TMPDIR/corrected.fasta
 fi;
+ 
+if [ ! -r $TMPDIR/corrected.fasta ];
+then
+	 echo "File $TMPDIR/corrected.fasta does not exist. Check that SEECER was compiled and paths are correct."
+	exit 1;
+
+fi; 
+
 

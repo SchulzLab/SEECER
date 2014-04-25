@@ -79,6 +79,7 @@ int main(int argc, char* argv[]) {
 
     int n = origs.size();
   
+    const int MAXSEQLENGTH=10000;  
     char id[256];
     char seq[256];
     char seqc[256];

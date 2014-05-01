@@ -5,6 +5,7 @@
 
 #include <vector>
 using namespace std;
+#define MAXSEQLENGTH 10000  
 
 char* getread(int& rid, char* annot, char* seq, FILE* f2, FILE* f3) {
   char a;
@@ -47,10 +48,10 @@ void closeFiles(vector<FILE*>& files) {
 
 bool ReadNextLines(FILE* f, char* id, char* seq) {
     assert(!feof(f));
-    fgets(id, 256, f);
+    fgets(id, MAXSEQLENGTH, f);
     if (id[0] == '+') {
-	if (!fgets(id, 256, f)) return false;
-	if (!fgets(id, 256, f)) return false;
+	if (!fgets(id, MAXSEQLENGTH, f)) return false;
+	if (!fgets(id, MAXSEQLENGTH, f)) return false;
     }
     int i = 0;
     while (id[i+1] != '\0' && id[i+1] != '\n') {
@@ -78,8 +79,7 @@ int main(int argc, char* argv[]) {
       && origs.size() == output.size()) {
 
     int n = origs.size();
-    const int MAXSEQLENGTH=10000;  
-    char id[256];
+    char id[MAXSEQLENGTH];
     char seq[MAXSEQLENGTH];
     char seqc[MAXSEQLENGTH];
     char annot[MAXSEQLENGTH];

@@ -24,7 +24,7 @@ AC_ARG_WITH([seqan-include-path],
   [AS_HELP_STRING([--seqan-include-path],
     [location of the SeqAn headers, default to seqan-cxx/])],
   [SEQAN_CFLAGS="-I$withval"],
-  [SEQAN_CFLAGS='-Iseqan-cxx/'])
+  [SEQAN_CFLAGS='-Iext/seqan/include'])
 AC_SUBST(SEQAN_CFLAGS)
 
 AC_OUTPUT

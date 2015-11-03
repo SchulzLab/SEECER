@@ -1,0 +1,6 @@
+[submodule "ext/jellyfish"]
+	path = ext/jellyfish
+	url = https://github.com/gmarcais/Jellyfish.git
+[submodule "ext/seqan"]
+	path = ext/seqan
+	url = https://github.com/seqan/seqan.git

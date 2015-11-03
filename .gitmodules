@@ -4,3 +4,6 @@
 [submodule "ext/seqan"]
 	path = ext/seqan
 	url = https://github.com/seqan/seqan.git
+[submodule "ext/yaggo"]
+	path = ext/yaggo
+	url = https://github.com/gmarcais/yaggo.git

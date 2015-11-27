@@ -27,7 +27,9 @@
 
 BINDIR='bin/' #this can be hardcoded to /absolute/path/to/SEECER/bin/
 JF="../jellyfish-1.1.11/bin/jellyfish"    #this may be hardcoded to /absolute/path/to/jellyfish/bin/
-
+JF="ext/jellyfish/jellybin/bin/jellyfish"    #ext/jellyfish/jellybin/bin/
+LD_LIBRARY_PATH="ext/jellyfish/jellybin/lib"
+export LD_LIBRARY_PATH
 K=17
 SEECER_PARAMS=""
 SeecerStep=1

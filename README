@@ -12,15 +12,7 @@ Requirements:
 3. GNU Scientific Library
 
 Installation:
-1. Compile JELLYFISH
-cd jellyfish-1.1.4/
-./configure
-make
-
-2. Compile SEECER:
-cd SEECER 
-./configure
-make
+./run_seecer_installer.sh
 
 3. Usage:
 
